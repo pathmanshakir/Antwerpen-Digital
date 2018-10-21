@@ -1,0 +1,71 @@
+<div class="card" *ngIf="TypeOfSchool">
+  <div class="card-header">Type of School</div>
+  <div class="card-block">
+        <button type="button"  (click)="getPos()">Lokaliseren</button>
+        <p>Click on marked schools to see the details!</p>
+    
+
+
+      <div>
+            <agm-map [latitude]="51.194609528298"  [longitude]=" 4.4266640370477" [zoom] = "10" >
+                  <div *ngFor= "let locatie of TypeOfSchool.data">
+                    <div *ngFor = "let poly of locatie.geometry2.coordinates">
+                        <div *ngFor= "let punt of poly" >
+                            <agm-marker [latitude]=punt[1] [longitude]=punt[0] >
+                                <agm-snazzy-info-window [maxWidth]="1200">
+                                    <ng-template>
+                                            <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                              
+                                                            <th>id </th>
+                                                            <th>objectid</th>
+                                                            <th>geometry2</th>
+                                                            <th>thema</th>
+                                                            <th>type</th>
+                                                            <th>subtype</th>
+                                                        
+                                                            <th>niveau</th>
+                                                            <th>bereik</th>
+                                                            <th>begindatum</th>
+                                                            <th>gisid</th>
+                                                            <th>shape_length</th>
+                                                            <th>shape_area</th>
+                                          
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr >
+                                                            <td>{{locatie.id}}</td>
+                                                            <td>{{locatie.objectid}}</td> 
+                                                            <td>{{locatie.geometry2}}</td>
+                                                            <td>{{locatie.thema}}</td>
+                                                            <td>{{locatie.type}}</td>
+                                                            <td>{{locatie.subtype}}</td>
+                                                            
+                                                            <td>{{locatie.niveau}}</td>
+                                                            <td>{{locatie.bereik}}</td>
+                                                            <td>{{locatie.begindatum}}</td>
+                                                            <td>{{locatie.gisid}}</td>
+                                                            <td>{{locatie.shape_length}}</td>
+                                                            <td>{{locatie.shape_area}}</td>
+                                                           
+                                                        </tr>
+                                                        
+                                                      </tbody>
+                                                </table>
+                                          </ng-template>
+                                        </agm-snazzy-info-window>
+                            </agm-marker>
+                            <agm-marker [latitude]=lat [longitude]=lng [iconUrl]=Icon></agm-marker>
+                        </div>
+                    </div>
+                </div>  
+            </agm-map>
+          </div>
+  
+
+  </div>
+  </div>
+
+  

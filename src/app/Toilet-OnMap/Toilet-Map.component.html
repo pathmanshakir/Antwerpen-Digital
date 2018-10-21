@@ -1,0 +1,53 @@
+ 
+ <label><h1>Type PostCode</h1></label>
+
+ <input #postCode type="text" id="id_endHour" class="form-control">
+ <p>Click on the map once you entered a postcode if you are not getting a result !</p>
+ <p>Click on marked schools to see the details!</p>
+        <button type="button"  (click)="getPos()">Lokaliseren</button>
+        <agm-map [latitude]="51.194609528298"  [longitude]=" 4.4266640370477" [zoom]="9">
+         
+              <div *ngFor = "let data1 of Toilets.data">
+                <div *ngIf = "data1.postcode==postCode.value">
+              <agm-marker  [latitude]="data1.Lati"  [longitude]="data1.Longi" >  
+
+                  <agm-snazzy-info-window [maxWidth]="1500">
+                      <ng-template>
+                          <table class="table table-hover"  >
+                              <thead>
+                                  <tr > 
+                                        
+                                      <th>Adres</th>
+                                      <th>luiertafel</th>
+                                      <th>contactpersoon</th>
+                                      <th>betalend</th> 
+                    
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  
+                                      <td >{{data1.straat}} {{data1.huisnummer}} {{data1.postcode}} {{data1.district}}</td>
+                                      <td >{{data1.luiertafel}} </td>
+                                      <td >{{data1.contactpersoon}} </td>
+                                      <td >{{data1.betalend}} </td>
+                                     
+                                       
+                                   
+                                  </tr>
+                                  
+                                </tbody>
+                          </table>  
+                        </ng-template>
+                      </agm-snazzy-info-window>
+              </agm-marker>
+           
+          </div> 
+          </div>   
+          <agm-marker [latitude]=lat [longitude]=lng [iconUrl]=Icon></agm-marker>  
+        </agm-map>
+      
+
+  
+
+        

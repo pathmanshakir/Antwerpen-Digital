@@ -1,0 +1,39 @@
+
+  
+  <label><h1>Filter Toilets by postcode</h1></label>
+ 
+
+  <input #street type="text" id="id_endHour" class="form-control" [(ngModel)]="search">
+
+<div class="card" *ngIf="Toilets">
+        <div class="card-header">Public Toeilets</div>
+        <div class="card-block">
+            <table class="table table-hover"  >
+                <thead>
+                    <tr > 
+                          
+                        <th>Adres</th>
+                        <th>luiertafel</th>
+                        <th>contactpersoon</th>
+                        <th>betalend</th> 
+      
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let data1 of Toilets.data  ">
+                    
+                        <td *ngIf ="data1.postcode==street.value">{{data1.straat}} {{data1.huisnummer}} {{data1.postcode}} {{data1.district}}</td>
+                        <td *ngIf ="data1.postcode==street.value">{{data1.luiertafel}} </td>
+                        <td *ngIf ="data1.postcode==street.value">{{data1.contactpersoon}} </td>
+                        <td *ngIf ="data1.postcode==street.value">{{data1.betalend}} </td>
+                       
+                         
+                     
+                    </tr>
+                    
+                  </tbody>
+            </table> 
+      
+      
+        </div>   
+
